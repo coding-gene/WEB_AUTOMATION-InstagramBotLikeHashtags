@@ -3,6 +3,7 @@ from logic.config import get_environment_variables
 import logging
 import time
 
+start_time = time.time()
 # noinspection PyBroadException
 try:
     pocetak = time.time()
@@ -19,8 +20,9 @@ try:
     open_browser = instagram.open_browser()
 
 except Exception:
-    logging.exception('Dogodila se greška sljedećeg sadržaja:')
+    logging.exception('An error occurred during job performing:')
 else:
-    logging.info('Uspješno izvršen zadatak.')
+    logging.info('Job ended.')
 finally:
-    logging.info(f'Obrada trajala: {time.strftime("%H sati, %M minuta i %S sekundi.", time.gmtime(time.time() - pocetak))}\n')
+    logging.info(
+        f'Job duration: {time.strftime("%H hours, %M minutes, %S seconds.", time.gmtime(time.time() - start_time))}\n')
