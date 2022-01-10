@@ -5,10 +5,10 @@ import time
 
 start_time = time.time()
 logging.basicConfig(filename='logs.txt',
-                        filemode='a',
-                        format='%(asctime)s %(levelname)-8s %(message)s',
-                        level=logging.INFO,
-                        datefmt='%Y-%m-%d %H:%M:%S')
+                    filemode='a',
+                    format='%(asctime)s %(levelname)-8s %(message)s',
+                    level=logging.INFO,
+                    datefmt='%Y-%m-%d %H:%M:%S')
 logging.info('Početak izvršavanja zadatka.')
 hashtag = 'datascience'
 # noinspection PyBroadException
@@ -19,6 +19,8 @@ try:
     instagram.open_browser()
     instagram.enter_credentials()
     instagram.find_hashtag(hashtag=hashtag)
+    instagram.first_photo_by_hashtag()
+    instagram.like_photo()
 
 except Exception:
     logging.exception('An error occurred during job performing:')
