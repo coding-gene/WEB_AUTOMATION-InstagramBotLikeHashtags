@@ -11,20 +11,37 @@ class Instagram:
         self.username = env.get('username')
         self.password = env.get('password')
         self.url = env.get('url')
-        self.hashtag = env.get('hashtag')
-        self.hashtags = env.get('hashtags')
+
+        self.driver = webdriver.Chrome()
+        self.wait = WebDriverWait(self.driver, 10)
 
     def open_browser(self):
-        driver = webdriver.Chrome()
-        driver.get(self.url)
-        driver.implicitly_wait(5)
+        self.driver.get(self.url)
+        self.driver.implicitly_wait(5)
         time.sleep(2)
-        driver.maximize_window()
+        self.driver.maximize_window()
         time.sleep(2)
-        driver.find_element_by_xpath("//button[text()='Accept All']").click()
+        self.driver.find_element_by_xpath("//button[text()='Accept All']").click()
         time.sleep(2)
 
-        return driver
+        return self.driver
 
-    def test(self):
-        pass
+    def enter_credentials(self):
+        self.wait.until(ec.visibility_of_element_located((By.XPATH, '//*[@name ="username"]'))).send_keys(self.username)
+        time.sleep(2)
+        input_pass = self.driver.find_element_by_xpath('//*[@name ="password"]')
+        input_pass.click()
+        time.sleep(2)
+        input_pass.send_keys(self.password)
+        time.sleep(2)
+        button = self.driver.find_element_by_xpath('//button[@type=\"submit\"]')  # todo ("//div[contains(text(), 'Log In')]")
+        button.click()
+        time.sleep(4)
+        self.driver.find_element_by_xpath("//button[text()='Not Now']").click()
+        time.sleep(10)
+        self.driver.find_element_by_xpath("//button[text()='Not Now']").click()
+        time.sleep(2)
+
+    def find_hashtag(self, hashtag):
+        self.driver.get(f'https://www.instagram.com/explore/tags/{hashtag}/')
+        time.sleep(2)

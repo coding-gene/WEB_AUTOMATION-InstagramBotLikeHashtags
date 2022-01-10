@@ -4,20 +4,21 @@ import logging
 import time
 
 start_time = time.time()
-# noinspection PyBroadException
-try:
-    pocetak = time.time()
-    logging.basicConfig(filename='logs.txt',
+logging.basicConfig(filename='logs.txt',
                         filemode='a',
                         format='%(asctime)s %(levelname)-8s %(message)s',
                         level=logging.INFO,
                         datefmt='%Y-%m-%d %H:%M:%S')
-    logging.info('Početak izvršavanja zadatka.')
-
+logging.info('Početak izvršavanja zadatka.')
+hashtag = 'datascience'
+# noinspection PyBroadException
+try:
     envVar = get_environment_variables()
     instagram = Instagram(envVar.get('instagram'))
 
-    open_browser = instagram.open_browser()
+    instagram.open_browser()
+    instagram.enter_credentials()
+    instagram.find_hashtag(hashtag=hashtag)
 
 except Exception:
     logging.exception('An error occurred during job performing:')
