@@ -1,1 +1,1 @@
-# WEB_AUTOMATION-InstagramLikeHashtags
+# WEB_AUTOMATION-InstagramBotLikeHashtags
