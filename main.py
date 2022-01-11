@@ -27,5 +27,6 @@ except Exception:
 else:
     logging.info('Job ended.')
 finally:
+    #instagram.close_driver()
     logging.info(
         f'Job duration: {time.strftime("%H hours, %M minutes, %S seconds.", time.gmtime(time.time() - start_time))}\n')
