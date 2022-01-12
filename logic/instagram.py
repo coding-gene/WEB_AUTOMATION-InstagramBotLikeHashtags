@@ -93,5 +93,28 @@ class Instagram:
         # self.driver.find_element_by_xpath('//*[@aria-label="Like"]').click()
         # time.sleep(2)
 
+    def next_photo(self):
+        time.sleep(2)
+        nex = self.driver.find_element(By.XPATH, '//a[text()=\"Next\"]')
+
+        return nex
+
+    def continue_liking(self):  # todo ovdje se opet igrati
+        for x in range(100):
+            x = self.next_photo()
+            if x:
+                x.click()
+                time.sleep(4)
+                self.like_photo()
+                time.sleep(4)
+            else:
+                print('end session')
+                break
+
+    def close_last_photo(self):
+        close = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Close"]')
+        close.click()
+        time.sleep(2)
+
     def close_driver(self):
         self.driver.close()
