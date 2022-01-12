@@ -20,6 +20,7 @@ try:
     instagram.enter_credentials()
     instagram.find_hashtag(hashtag=hashtag)
     instagram.first_photo_by_hashtag()
+    # instagram.get_soup_object(hashtag=hashtag)
     instagram.like_photo()
 
 except Exception:
@@ -27,6 +28,6 @@ except Exception:
 else:
     logging.info('Job ended.')
 finally:
-    #instagram.close_driver()
+    # instagram.close_driver()
     logging.info(
         f'Job duration: {time.strftime("%H hours, %M minutes, %S seconds.", time.gmtime(time.time() - start_time))}\n')
