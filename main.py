@@ -11,7 +11,7 @@ logging.basicConfig(filename='logs.txt',
                     level=logging.INFO,
                     datefmt='%Y-%m-%d %H:%M:%S')
 logging.info('Početak izvršavanja zadatka.')
-hashtags = 'datascience'  # ['datascience', 'dataengineering', 'pyspark', 'apachekafka']
+hashtags = ['datascience', 'dataengineering', 'pyspark', 'apachekafka', 'bigdata', 'learndatascience', 'postgresql']
 # noinspection PyBroadException
 try:
     envVar = get_environment_variables()
@@ -19,7 +19,7 @@ try:
 
     instagram.open_browser()
     instagram.enter_credentials()
-    instagram.find_hashtag(hashtag=hashtags)
+    instagram.find_hashtag(hashtag=random.choice(hashtags))
     instagram.first_photo_by_hashtag()
     instagram.like_first_photo()
     instagram.continue_liking()
