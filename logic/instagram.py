@@ -93,7 +93,7 @@ class Instagram:
         return nex
 
     def continue_liking(self, number_of_photos_to_be_liked):
-        for n in range(number_of_photos_to_like):
+        for n in range(number_of_photos_to_be_liked):
             n = self.next_photo()
             if n:
                 self.like_next_photo()
