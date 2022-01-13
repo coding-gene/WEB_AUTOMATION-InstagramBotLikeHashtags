@@ -10,7 +10,7 @@ logging.basicConfig(filename='logs.txt',
                     format='%(asctime)s %(levelname)-8s %(message)s',
                     level=logging.INFO,
                     datefmt='%Y-%m-%d %H:%M:%S')
-logging.info('Početak izvršavanja zadatka.')
+logging.info('Job started.')
 # add your target hashtags into list
 hashtags = ['datascience', 'dataengineering', 'pyspark', 'apachekafka',
             'bigdata', 'learndatascience', 'postgresql', 'datalake',
