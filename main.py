@@ -2,6 +2,7 @@ from logic.instagram import Instagram
 from logic.config import get_environment_variables
 import logging
 import time
+import random
 
 start_time = time.time()
 logging.basicConfig(filename='logs.txt',
@@ -10,7 +11,7 @@ logging.basicConfig(filename='logs.txt',
                     level=logging.INFO,
                     datefmt='%Y-%m-%d %H:%M:%S')
 logging.info('Početak izvršavanja zadatka.')
-hashtag = 'datascience'
+hashtags = 'datascience'  # ['datascience', 'dataengineering', 'pyspark', 'apachekafka']
 # noinspection PyBroadException
 try:
     envVar = get_environment_variables()
@@ -18,11 +19,10 @@ try:
 
     instagram.open_browser()
     instagram.enter_credentials()
-    instagram.find_hashtag(hashtag=hashtag)
+    instagram.find_hashtag(hashtag=hashtags)
     instagram.first_photo_by_hashtag()
-    # instagram.get_soup_object(hashtag=hashtag)
     instagram.like_photo()
-
+    instagram.continue_liking()
 except Exception:
     logging.exception('An error occurred during job performing:')
 else:
