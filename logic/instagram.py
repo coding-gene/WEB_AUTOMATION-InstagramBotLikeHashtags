@@ -66,7 +66,7 @@ class Instagram:
                     '/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')
             like_button.click()
         except selexcept.NoSuchElementException:
-            print('slika već lajkana')
+            print('Photo already liked!')
             pass
 
     def next_photo(self):
