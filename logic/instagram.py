@@ -13,7 +13,7 @@ class Instagram:
         # create env.json file and add your credentials (username, password)
         self.username = env.get('username')
         self.password = env.get('password')
-
+        # add chromedriver.exe into C:\_CHROMEDRIVER\bin
         self.options = webdriver.   ChromeOptions()
         self.options.add_experimental_option("detach", True)
         self.options.add_argument("--start-maximized")
