@@ -57,7 +57,23 @@ class Instagram:
         first = self.driver.find_element(By.CLASS_NAME, '_9AhH0')
         first.click()
 
-    def like_photo(self):
+    def like_first_photo(self):
+        time.sleep(4)
+        try:
+            self.driver.find_element(By.XPATH,
+                    '/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button/div[2]')
+            like_button = self.driver.find_element(By.XPATH,
+                    '/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')
+            like_button.click()
+            time.sleep(2)
+            next = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div/button')
+            time.sleep(1)
+            next.click()
+        except selexcept.NoSuchElementException:
+            print('Photo already liked!')
+            pass
+
+    def like_next_photo(self):
         time.sleep(4)
         try:
             self.driver.find_element(By.XPATH,
@@ -71,20 +87,14 @@ class Instagram:
 
     def next_photo(self):
         time.sleep(2)
-        nex = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div/button')
+        nex = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div[2]/button')
         return nex
 
     def continue_liking(self):  # todo ovdje se opet igrati
-        for x in range(5):
-            x = self.next_photo()
-            if x:
-                x.click()
-                time.sleep(4)
-                self.like_photo()
-                time.sleep(4)
-            else:
-                print('end session')
-                break
+        for n in range(5):
+            self.like_next_photo()
+            time.sleep(1)
+            self.next_photo().click()
 
     def close_last_photo(self):
         close = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Close"]')
