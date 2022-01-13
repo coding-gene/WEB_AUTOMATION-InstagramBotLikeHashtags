@@ -97,9 +97,9 @@ class Instagram:
             self.next_photo().click()
 
     def close_last_photo(self):
+        time.sleep(2)
         close = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Close"]')
         close.click()
-        time.sleep(2)
 
     def close_driver(self):
         self.driver.close()
