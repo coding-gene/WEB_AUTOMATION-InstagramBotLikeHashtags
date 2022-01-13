@@ -17,7 +17,9 @@ class Instagram:
         self.options = webdriver.   ChromeOptions()
         self.options.add_experimental_option("detach", True)
         self.options.add_argument("--start-maximized")
-        self.driver = webdriver.Chrome(chrome_options=self.options, executable_path=r'C:\_CHROMEDRIVER\bin\chromedriver.exe')
+        self.driver = webdriver.Chrome(
+            chrome_options=self.options,
+            executable_path=r'C:\_CHROMEDRIVER\bin\chromedriver.exe')
         self.wait = WebDriverWait(self.driver, 10)
         time.sleep(1)
         self.driver.get('chrome://settings/clearBrowserData')
@@ -66,9 +68,9 @@ class Instagram:
                     '/html/body/div[6]/div[3]/div/article/div/div[2]/div/div/div[2]/section[1]/span[1]/button')
             like_button.click()
             time.sleep(2)
-            next = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div/button')
+            next_button = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div/button')
             time.sleep(1)
-            next.click()
+            next_button.click()
         except selexcept.NoSuchElementException:
             print('Photo already liked!')
             pass
@@ -90,7 +92,7 @@ class Instagram:
         nex = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div[2]/button')
         return nex
 
-    def continue_liking(self, number_of_photos_to_like):
+    def continue_liking(self, number_of_photos_to_be_liked):
         for n in range(number_of_photos_to_like):
             n = self.next_photo()
             if n:
