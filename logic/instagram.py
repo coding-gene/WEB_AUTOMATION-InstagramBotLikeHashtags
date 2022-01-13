@@ -55,7 +55,7 @@ class Instagram:
         self.driver.get(f'https://www.instagram.com/explore/tags/{hashtag}/')
 
     def first_photo_by_hashtag(self):
-        time.sleep(1)
+        time.sleep(2)
         first = self.driver.find_element(By.CLASS_NAME, '_9AhH0')
         first.click()
 
@@ -110,4 +110,5 @@ class Instagram:
         close.click()
 
     def close_driver(self):
+        time.sleep(10)
         self.driver.close()
