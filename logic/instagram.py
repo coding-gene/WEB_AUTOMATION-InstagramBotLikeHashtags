@@ -10,9 +10,9 @@ import time
 class Instagram:
 
     def __init__(self, env):
+        # create env.json file and add your credentials (username, password)
         self.username = env.get('username')
         self.password = env.get('password')
-        self.url = env.get('url')
 
         self.options = webdriver.   ChromeOptions()
         self.options.add_experimental_option("detach", True)
@@ -28,7 +28,7 @@ class Instagram:
 
     def open_browser(self):
         time.sleep(1)
-        self.driver.get(self.url)
+        self.driver.get('https://www.instagram.com/accounts/login/')
         self.driver.implicitly_wait(5)
         time.sleep(2)
         self.driver.find_element(By.XPATH, "//button[text()='Accept All']").click()
@@ -72,6 +72,9 @@ class Instagram:
             time.sleep(1)
             next_button.click()
         except selexcept.NoSuchElementException:
+            next_button = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div/button')
+            time.sleep(1)
+            next_button.click()
             print('Photo already liked!')
             pass
 
@@ -105,10 +108,17 @@ class Instagram:
 
     def close_last_photo(self):
         time.sleep(2)
-        close = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[1]/button')
+        close_last_photos = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[1]/button')
         time.sleep(1)
-        close.click()
+        close_last_photos.click()
+
+    def logout(self):
+        # not finished, need to add icon_button & logout_button
+        time.sleep(4)
+        self.driver.get(r'https://www.instagram.com/')
+        # icon_button = None
+        #  logout_button = None
 
     def close_driver(self):
-        time.sleep(10)
+        time.sleep(4)
         self.driver.close()
