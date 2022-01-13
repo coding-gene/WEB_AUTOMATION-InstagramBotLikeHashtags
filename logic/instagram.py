@@ -90,15 +90,21 @@ class Instagram:
         nex = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div[2]/button')
         return nex
 
-    def continue_liking(self):  # todo ovdje se opet igrati
-        for n in range(5):
-            self.like_next_photo()
-            time.sleep(1)
-            self.next_photo().click()
+    def continue_liking(self):
+        for n in range(3):
+            n = self.next_photo()
+            if n:
+                self.like_next_photo()
+                time.sleep(1)
+                self.next_photo().click()
+            else:
+                print('Session ended!')
+                break
 
     def close_last_photo(self):
         time.sleep(2)
-        close = self.driver.find_element(By.CSS_SELECTOR, '[aria-label="Close"]')
+        close = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[1]/button')
+        time.sleep(1)
         close.click()
 
     def close_driver(self):
