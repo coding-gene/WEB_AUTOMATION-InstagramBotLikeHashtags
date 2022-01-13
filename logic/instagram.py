@@ -90,8 +90,8 @@ class Instagram:
         nex = self.driver.find_element(By.XPATH, '/html/body/div[6]/div[2]/div/div[2]/button')
         return nex
 
-    def continue_liking(self):
-        for n in range(3):
+    def continue_liking(self, number_of_photos_to_like):
+        for n in range(number_of_photos_to_like):
             n = self.next_photo()
             if n:
                 self.like_next_photo()

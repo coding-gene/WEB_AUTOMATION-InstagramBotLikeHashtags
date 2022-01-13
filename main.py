@@ -22,7 +22,7 @@ try:
     instagram.find_hashtag(hashtag=random.choice(hashtags))
     instagram.first_photo_by_hashtag()
     instagram.like_first_photo()
-    instagram.continue_liking()
+    instagram.continue_liking(number_of_photos_to_like=3)
     instagram.close_last_photo()
 except Exception:
     logging.exception('An error occurred during job performing:')
